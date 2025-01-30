@@ -24,6 +24,31 @@ public class Farm {
         return  "Added flower " + flower.name + ".";
     }
 
+    public String removeFlower(String flowerName){
+        for (int i = 0; i < flowerArrayList.size(); i++) {
+            if (flowerArrayList.get(i).name.equalsIgnoreCase(flowerName)) {
+                flowerArrayList.remove(i);
+            }
+        }
+        return  "Removed flower " + flowerName + ".";
+    }
+
+    public String waterFlower(String flowerName){
+        for (int i = 0; i < flowerArrayList.size(); i++) {
+            if (flowerArrayList.get(i).name.equalsIgnoreCase(flowerName)) {
+                flowerArrayList.get(i).chanceOfGrowth+=5;
+                if (flowerArrayList.get(i).chanceOfGrowth>100){
+                    flowerArrayList.get(i).chanceOfGrowth=100;
+                }
+                return  "Watered flower " + flowerName + ", increased chance of growth." + flowerArrayList.get(i).chanceOfGrowth;
+
+            }
+            else {
+                return "No flower with this name exists.";
+            }
+        }
+        return null;
+    }
 
 
 
