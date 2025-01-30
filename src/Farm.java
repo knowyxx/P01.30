@@ -1,8 +1,10 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Farm {
     private double area = 100;
     private ArrayList<Flower> flowerArrayList = new ArrayList<>();
+    private double money;
 
     public String addFlower(Flower flower){
         for (int i = 0; i < flowerArrayList.size(); i++) {
@@ -45,6 +47,22 @@ public class Farm {
             }
             else {
                 return "No flower with this name exists.";
+            }
+        }
+        return null;
+    }
+
+    public String harvestFlower(String flowerName){
+        Random rd = new Random();
+        for (int i = 0; i < flowerArrayList.size(); i++) {
+            if (flowerArrayList.get(i).name.equalsIgnoreCase(flowerName)) {
+                if (rd.nextInt(101)>flowerArrayList.get(i).chanceOfGrowth){
+                    money+=flowerArrayList.get(i).price*1.5;
+                    return "Flower has been harvested."+" +"+flowerArrayList.get(i).price*1.5;
+
+                }
+            }else {
+                return "Flower isn't grown yet.";
             }
         }
         return null;
