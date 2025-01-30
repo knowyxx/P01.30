@@ -1,4 +1,4 @@
-public abstract class Flower {
+public abstract class Flower extends Farm{
 
     protected String name;
     protected double price;
